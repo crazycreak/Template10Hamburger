@@ -32,6 +32,7 @@ namespace Template10Hamburger.Views
             Instance = this;
             InitializeComponent();
             SetNavigationService(navigationService);
+            generateNavigation();
         }
 
         public void SetNavigationService(INavigationService navigationService)
@@ -46,6 +47,42 @@ namespace Template10Hamburger.Views
                 Instance.BusyView.BusyText = text;
                 Instance.ModalContainer.IsModal = Instance.BusyView.IsBusy = busy;
             });
+        }
+
+        private void generateNavigation()
+        {
+            MyHamburgerMenu.PrimaryButtons.Add(genereateButton("ItemPage1"));
+            MyHamburgerMenu.PrimaryButtons.Add(genereateButton("ItemPage2"));
+            MyHamburgerMenu.PrimaryButtons.Add(genereateButton("ItemPage3"));
+        }
+
+        private HamburgerButtonInfo genereateButton(string Text)
+        {
+            StackPanel stackPanel = new StackPanel
+            {
+                Orientation = Orientation.Horizontal
+            };
+            stackPanel.Children.Add(new SymbolIcon
+            {
+                Width = 48,
+                Height = 48,
+                Symbol = Symbol.Link
+            });
+            stackPanel.Children.Add(new TextBlock
+            {
+                Margin = new Thickness(12, 0, 0, 0),
+                VerticalAlignment = VerticalAlignment.Center,
+                Text = Text
+            });
+            HamburgerButtonInfo hamburgerButton = new HamburgerButtonInfo
+            {
+                Content = stackPanel,
+                ButtonType = HamburgerButtonInfo.ButtonTypes.Toggle,
+                ClearHistory = false,
+                PageType = typeof(Views.ItemPage),
+                PageParameter = Text
+            };
+            return hamburgerButton;
         }
     }
 }
