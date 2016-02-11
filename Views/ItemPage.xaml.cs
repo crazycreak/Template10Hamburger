@@ -25,6 +25,7 @@ namespace Template10Hamburger.Views
         public ItemPage()
         {
             this.InitializeComponent();
+            NavigationCacheMode = NavigationCacheMode.Enabled;
         }
     }
 }

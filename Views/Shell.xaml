@@ -14,7 +14,7 @@
     <Controls:ModalDialog x:Name="ModalContainer" CanBackButtonDismiss="False"
                           DisableBackButtonWhenModal="True">
         <Controls:ModalDialog.Content>
-            <Controls:HamburgerMenu x:Name="MyHamburgerMenu">
+            <Controls:HamburgerMenu x:Name="MyHamburgerMenu" AutoHighlightCorrectButton="False">
 
                 <Controls:HamburgerMenu.PrimaryButtons>
                     <!--  mainpage button  -->

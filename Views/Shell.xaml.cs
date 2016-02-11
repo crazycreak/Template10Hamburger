@@ -79,10 +79,17 @@ namespace Template10Hamburger.Views
                 Content = stackPanel,
                 ButtonType = HamburgerButtonInfo.ButtonTypes.Toggle,
                 ClearHistory = false,
-                PageType = typeof(Views.ItemPage),
                 PageParameter = Text
             };
+            hamburgerButton.Tapped += Button_Tapped;
+
             return hamburgerButton;
+        }
+
+        private void Button_Tapped(object sender, RoutedEventArgs e)
+        {
+            HamburgerButtonInfo Button = sender as HamburgerButtonInfo;
+            MyHamburgerMenu.NavigationService.Navigate(typeof(Views.ItemPage), Button.PageParameter);
         }
     }
 }

@@ -22,7 +22,23 @@ namespace Template10Hamburger.ViewModels
         {
             if (parameter != null)
             {
-                Title = parameter as string;
+                string key = parameter as string; ;
+                Title = key;
+
+                int buttonIndex = 0;
+                switch(key)
+                {
+                    case "ItemPage1":
+                        buttonIndex = 1;
+                        break;
+                    case "ItemPage2":
+                        buttonIndex = 2;
+                        break;
+                    case "ItemPage3":
+                        buttonIndex = 3;
+                        break;
+                }
+                Views.Shell.HamburgerMenu.Selected = Views.Shell.HamburgerMenu.PrimaryButtons.ElementAt(buttonIndex);
             }
             return base.OnNavigatedToAsync(parameter, mode, state);
         }
