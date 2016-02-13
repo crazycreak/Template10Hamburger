@@ -1,15 +1,13 @@
-using System.ComponentModel;
-using System.Linq;
 using Template10.Common;
 using Template10.Controls;
 using Template10.Services.NavigationService;
-using Windows.UI.Core;
+using Template10Hamburger.Controls;
+using Template10Hamburger.Models;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace Template10Hamburger.Views
 {
-    // DOCS: https://github.com/Windows-XAML/Template10/wiki/Docs-%7C-SplitView
     public sealed partial class Shell : Page
     {
         public static Shell Instance { get; set; }
@@ -51,46 +49,30 @@ namespace Template10Hamburger.Views
 
         private void generateNavigation()
         {
-            MyHamburgerMenu.PrimaryButtons.Add(genereateButton("ItemPage1"));
-            MyHamburgerMenu.PrimaryButtons.Add(genereateButton("ItemPage2"));
-            MyHamburgerMenu.PrimaryButtons.Add(genereateButton("ItemPage3"));
+            MyHamburgerMenu.PrimaryButtons.Add(genereateButton(new NavigationItemModel() { Text = "ItemPage1", Icon = Symbol.Link }));
+            MyHamburgerMenu.PrimaryButtons.Add(genereateButton(new NavigationItemModel() { Text = "ItemPage2", Icon = Symbol.Mail }));
+            MyHamburgerMenu.PrimaryButtons.Add(genereateButton(new NavigationItemModel() { Text = "ItemPage3", Icon = Symbol.Send }));
         }
 
-        private HamburgerButtonInfo genereateButton(string Text)
+        private HamburgerButtonInfo genereateButton(NavigationItemModel Item)
         {
-            StackPanel stackPanel = new StackPanel
+            NavigationItem ItemControl = new NavigationItem() { DataContext = Item };
+            HamburgerButtonInfo HamburgerButton = new HamburgerButtonInfo
             {
-                Orientation = Orientation.Horizontal
-            };
-            stackPanel.Children.Add(new SymbolIcon
-            {
-                Width = 48,
-                Height = 48,
-                Symbol = Symbol.Link
-            });
-            stackPanel.Children.Add(new TextBlock
-            {
-                Margin = new Thickness(12, 0, 0, 0),
-                VerticalAlignment = VerticalAlignment.Center,
-                Text = Text
-            });
-            HamburgerButtonInfo hamburgerButton = new HamburgerButtonInfo
-            {
-                Content = stackPanel,
+                Content = ItemControl,
                 ButtonType = HamburgerButtonInfo.ButtonTypes.Toggle,
                 ClearHistory = false,
-                PageParameter = Text
+                PageParameter = Item.Text,
             };
-            hamburgerButton.Tapped += Button_Tapped;
+            HamburgerButton.Tapped += Button_Tapped;
 
-            return hamburgerButton;
+            return HamburgerButton;
         }
 
         private void Button_Tapped(object sender, RoutedEventArgs e)
         {
             HamburgerButtonInfo Button = sender as HamburgerButtonInfo;
-            MyHamburgerMenu.NavigationService.Navigate(typeof(Views.ItemPage), Button.PageParameter);
+            MyHamburgerMenu.NavigationService.Navigate(typeof(ItemPage), Button.PageParameter);
         }
     }
 }
-
