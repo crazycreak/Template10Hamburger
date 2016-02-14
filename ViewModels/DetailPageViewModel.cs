@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Template10.Common;
-using Template10.Mvvm;
 using Template10.Services.NavigationService;
+using Template10Hamburger.Classes;
 using Windows.UI.Xaml.Navigation;
 
 namespace Template10Hamburger.ViewModels
 {
-    public class DetailPageViewModel : ViewModelBase
+    public class DetailPageViewModel : MyViewModelBase
     {
         public DetailPageViewModel()
         {
@@ -34,7 +34,7 @@ namespace Template10Hamburger.ViewModels
             {
                 Value = parameter?.ToString();
             }
-            return Task.CompletedTask;
+            return base.OnNavigatedToAsync(parameter, mode, state);
         }
 
         public override Task OnNavigatedFromAsync(IDictionary<string, object> state, bool suspending)

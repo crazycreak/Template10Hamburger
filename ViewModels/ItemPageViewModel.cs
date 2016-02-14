@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Template10.Mvvm;
+using Template10Hamburger.Classes;
+using Windows.UI;
 using Windows.UI.Xaml.Navigation;
 
 namespace Template10Hamburger.ViewModels
 {
-    public class ItemPageViewModel : ViewModelBase
+    public class ItemPageViewModel : MyViewModelBase
     {
         public ItemPageViewModel()
         {
@@ -26,21 +24,25 @@ namespace Template10Hamburger.ViewModels
                 Title = key;
 
                 int buttonIndex = 0;
-                switch(key)
+                Color myColor;
+                switch (key)
                 {
                     case "ItemPage1":
                         buttonIndex = 1;
+                        myColor = Colors.Green;
                         break;
                     case "ItemPage2":
                         buttonIndex = 2;
+                        myColor = Colors.Orange;
                         break;
                     case "ItemPage3":
                         buttonIndex = 3;
+                        myColor = Colors.Aqua;
                         break;
                 }
-                Views.Shell.HamburgerMenu.Selected = Views.Shell.HamburgerMenu.PrimaryButtons.ElementAt(buttonIndex);
+                updateNavigation(myColor, buttonIndex);
             }
-            return base.OnNavigatedToAsync(parameter, mode, state);
+            return Task.CompletedTask;
         }
 
         private string _Title = "Default";

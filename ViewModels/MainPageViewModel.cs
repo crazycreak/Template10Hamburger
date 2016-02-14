@@ -1,13 +1,13 @@
-using Template10.Mvvm;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Template10.Services.NavigationService;
 using Windows.UI.Xaml.Navigation;
+using Template10Hamburger.Classes;
 
 namespace Template10Hamburger.ViewModels
 {
-    public class MainPageViewModel : ViewModelBase
+    public class MainPageViewModel : MyViewModelBase
     {
         public MainPageViewModel()
         {
@@ -27,7 +27,7 @@ namespace Template10Hamburger.ViewModels
                 Value = state[nameof(Value)]?.ToString();
                 state.Clear();
             }
-            return Task.CompletedTask;
+            return base.OnNavigatedToAsync(parameter, mode, state);
         }
 
         public override Task OnNavigatedFromAsync(IDictionary<string, object> state, bool suspending)

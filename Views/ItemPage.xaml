@@ -23,7 +23,7 @@
         </Grid.RowDefinitions>
 
         <!--  header  -->
-        <controls:PageHeader Frame="{x:Bind Frame}" Text="{x:Bind ViewModel.Title}">
+        <controls:PageHeader Frame="{x:Bind Frame}" Text="{x:Bind ViewModel.Title}" Background="{x:Bind ViewModel.BackgroundBrush, Mode=OneWay}">
             <Interactivity:Interaction.Behaviors>
                 <Behaviors:EllipsisBehavior Visibility="Auto" />
             </Interactivity:Interaction.Behaviors>

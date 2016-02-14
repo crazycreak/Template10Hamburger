@@ -51,7 +51,7 @@
         </Grid.RowDefinitions>
 
         <!--  page header  -->
-        <controls:PageHeader Content="Main Page">
+        <controls:PageHeader Content="Main Page" Background="{x:Bind ViewModel.BackgroundBrush, Mode=OneWay}">
             <controls:PageHeader.SecondaryCommands>
                 <AppBarButton Click="{x:Bind ViewModel.GotoSettings}" Label="Settings" />
                 <AppBarButton Click="{x:Bind ViewModel.GotoPrivacy}" Label="Privacy" />

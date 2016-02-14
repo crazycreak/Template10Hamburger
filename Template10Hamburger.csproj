@@ -100,6 +100,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\BaseClass.cs" />
     <Compile Include="Controls\NavigationItem.xaml.cs">
       <DependentUpon>NavigationItem.xaml</DependentUpon>
     </Compile>

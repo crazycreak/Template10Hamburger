@@ -2,11 +2,12 @@ using System;
 using System.Threading.Tasks;
 using Template10.Mvvm;
 using Template10.Services.SettingsService;
+using Template10Hamburger.Classes;
 using Windows.UI.Xaml;
 
 namespace Template10Hamburger.ViewModels
 {
-    public class SettingsPageViewModel : ViewModelBase
+    public class SettingsPageViewModel : MyViewModelBase
     {
         public SettingsPartViewModel SettingsPartViewModel { get; } = new SettingsPartViewModel();
         public AboutPartViewModel AboutPartViewModel { get; } = new AboutPartViewModel();

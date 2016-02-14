@@ -51,7 +51,7 @@
         </Grid.RowDefinitions>
 
         <!--  header  -->
-        <controls:PageHeader Frame="{x:Bind Frame}" Text="Detail Page">
+        <controls:PageHeader Frame="{x:Bind Frame}" Text="Detail Page" Background="{x:Bind ViewModel.BackgroundBrush, Mode=OneWay}">
             <Interactivity:Interaction.Behaviors>
                 <Behaviors:EllipsisBehavior Visibility="Auto" />
             </Interactivity:Interaction.Behaviors>
